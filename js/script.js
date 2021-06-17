@@ -52,17 +52,17 @@ document.getElementById("text").innerHTML = printCats;
 
 // divide gatti in base a sesso, aggiunge e stampa fiocco
 let catsF = cats
-                .filter((cat) => cat.sesso == "F")
-                .map(cat => {
-                    cat.fiocco = {color: "pink", opacita: cat.eta / 20};
-                    return cat
-                });
+    .filter((cat) => cat.sesso == "F")
+    .map(cat => {
+        cat.fiocco = { color: "pink", opacita: cat.eta / 20 };
+        return cat
+    });
 let catsM = cats
-                .filter((cat) => cat.sesso == "M")
-                .map(cat => {
-                    cat.fiocco = {color: "blue", opacita: cat.eta / 20};
-                    return cat
-                });
+    .filter((cat) => cat.sesso == "M")
+    .map(cat => {
+        cat.fiocco = { color: "blue", opacita: cat.eta / 20 };
+        return cat
+    });
 
 const catRibbon = (arrOfCats) => {
     let frase = "";
@@ -74,13 +74,16 @@ const catRibbon = (arrOfCats) => {
 
 document.getElementById("ex").innerHTML = catRibbon(catsF) + catRibbon(catsM);
 
+// unisce gli getti F e M, mantenendo solo le proprietà nome e fiocco
+let allCats = [...catsF, ...catsM].map(({nome, fiocco}) => ({nome, fiocco}));
+
 /* value by reference? cancella le proprietà anche da catsF e catsM */
-let allCats = [...catsF, ...catsM];
+/* let allCats = [...catsF, ...catsM];
 allCats.forEach(cat => {
-    for(let k in cat) {
+    for (let k in cat) {
         if (k != "nome" && k != "fiocco") delete cat[k];
     }
-});
+}); */
 
 
 
