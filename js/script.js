@@ -51,5 +51,5 @@ cats.forEach((cat) => {
 document.getElementById("text").innerHTML = printCats;
 
 // divide gatti in base a sesso
-const catsF = [];
-const catsM = [];
+let catsF = cats.filter((cat) => cat.sesso == "F");
+let catsM = cats.filter((cat) => cat.sesso == "M");
