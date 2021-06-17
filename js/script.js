@@ -31,7 +31,7 @@ const cats = [
     },
     {
         nome: "Mia",
-        eta: 2,
+        eta: 3,
         colore: "khaki",
         sesso: "F"
     },
@@ -41,7 +41,7 @@ const cats = [
         colore: "chocolate",
         sesso: "M"
     }
-]
+];
 
 // stampa per ogni gatto nome e colore
 let printCats = "";
@@ -53,14 +53,26 @@ document.getElementById("text").innerHTML = printCats;
 // divide gatti in base a sesso
 let catsF = cats.filter((cat) => cat.sesso == "F");
 let catsM = cats.filter((cat) => cat.sesso == "M");
+
+catsF.forEach(cat => {
+    cat.fiocco = "pink",
+    cat.opacita = cat.eta / 20
+});
+catsM.forEach(cat => {
+    cat.fiocco = "blue",
+    cat.opacita = cat.eta / 20
+});
+
+/* uso forEach perché non capisco come utilizzare l'array che map ritorna
 catsF.map(cat => {
-    cat.fiocco = "#ff61c5",
+    cat.fiocco = "pink",
     cat.opacita = cat.eta / 20
-    });
+});
 catsM.map(cat => {
-    cat.fiocco = "#0080ff",
+    cat.fiocco = "blue",
     cat.opacita = cat.eta / 20
-    });
+}); */
+
 console.log(catsF);
 
 let gatte = "";
@@ -77,11 +89,14 @@ catsM.forEach(cat => {
 
 document.getElementById("ex").innerHTML = gatte + gatti;
 
+/* value by reference! cancella le proprietà anche da catsF e catsM */
 let allCats = [...catsF, ...catsM];
 allCats.forEach(cat => {
     for(let k in cat) {
         if (k != "nome" && k != "fiocco" && k != "opacita") delete cat[k];
     }
 });
+
+
 
 
