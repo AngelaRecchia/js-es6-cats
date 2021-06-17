@@ -73,9 +73,16 @@ catsF.forEach(cat => {
 catsM.forEach(cat => {
     const {nome} = cat;
     gatti += nome + '<i class="fas fa-ribbon" style="color: ' + cat.fiocco + '; opacity: ' + cat.opacita + ';"></i> <br>';
-})
-
-
-
+});
 
 document.getElementById("ex").innerHTML = gatte + gatti;
+
+let allCats = [...catsF, ...catsM];
+allCats.forEach(cat => {
+    for(let k in cat) {
+        if (k != "nome" && k != "fiocco" && k != "opacita") delete cat[k];
+    }
+});
+
+console.log(allCats);
+
