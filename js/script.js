@@ -53,3 +53,29 @@ document.getElementById("text").innerHTML = printCats;
 // divide gatti in base a sesso
 let catsF = cats.filter((cat) => cat.sesso == "F");
 let catsM = cats.filter((cat) => cat.sesso == "M");
+catsF.map(cat => {
+    cat.fiocco = "#ff61c5",
+    cat.opacita = cat.eta / 20
+    });
+catsM.map(cat => {
+    cat.fiocco = "#0080ff",
+    cat.opacita = cat.eta / 20
+    });
+console.log(catsF);
+
+let gatte = "";
+let gatti = "";
+catsF.forEach(cat => {
+    const {nome} = cat;
+    gatte += nome + '<i class="fas fa-ribbon" style="color: ' + cat.fiocco + '; opacity: ' + cat.opacita + ';"></i> <br>';
+});
+
+catsM.forEach(cat => {
+    const {nome} = cat;
+    gatti += nome + '<i class="fas fa-ribbon" style="color: ' + cat.fiocco + '; opacity: ' + cat.opacita + ';"></i> <br>';
+})
+
+
+
+
+document.getElementById("ex").innerHTML = gatte + gatti;
