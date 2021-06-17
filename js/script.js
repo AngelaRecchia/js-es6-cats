@@ -8,37 +8,37 @@ const cats = [
     {
         nome: "Celine",
         eta: 20,
-        colore: "grigio",
+        colore: "grey",
         sesso: "F"
     },
     {
         nome: "Phyus",
-        eta: 6,
-        colore: "nero",
+        eta: 7,
+        colore: "black",
         sesso: "M"
     },
     {
         nome: "Tom",
         eta: 4,
-        colore: "tigrato",
+        colore: "brown",
         sesso: "M"
     },
     {
         nome: "Pacio",
         eta: 15,
-        colore: "bianco e grigio",
+        colore: "cornsilk",
         sesso: "F"
     },
     {
         nome: "Mia",
         eta: 2,
-        colore: "bianco e nero",
+        colore: "khaki",
         sesso: "F"
     },
     {
         nome: "Zulu",
         eta: 11,
-        colore: "arancione",
+        colore: "chocolate",
         sesso: "M"
     }
 ]
@@ -46,7 +46,7 @@ const cats = [
 // stampa per ogni gatto nome e colore
 let printCats = "";
 cats.forEach((cat) => {
-    printCats += `${cat.nome} è di colore ${cat.colore}<br>`;
+    printCats += `${cat.nome} <i class="fas fa-cat" style="color: ${cat.colore}"></i> <br>`;
 });
 document.getElementById("text").innerHTML = printCats;
 
@@ -84,5 +84,4 @@ allCats.forEach(cat => {
     }
 });
 
-console.log(allCats);
 
