@@ -50,50 +50,35 @@ cats.forEach((cat) => {
 });
 document.getElementById("text").innerHTML = printCats;
 
-// divide gatti in base a sesso
-let catsF = cats.filter((cat) => cat.sesso == "F");
-let catsM = cats.filter((cat) => cat.sesso == "M");
+// divide gatti in base a sesso, aggiunge e stampa fiocco
+let catsF = cats
+                .filter((cat) => cat.sesso == "F")
+                .map(cat => {
+                    cat.fiocco = {color: "pink", opacita: cat.eta / 20};
+                    return cat
+                });
+let catsM = cats
+                .filter((cat) => cat.sesso == "M")
+                .map(cat => {
+                    cat.fiocco = {color: "blue", opacita: cat.eta / 20};
+                    return cat
+                });
 
-catsF.forEach(cat => {
-    cat.fiocco = "pink",
-    cat.opacita = cat.eta / 20
-});
-catsM.forEach(cat => {
-    cat.fiocco = "blue",
-    cat.opacita = cat.eta / 20
-});
+const catRibbon = (arrOfCats) => {
+    let frase = "";
+    arrOfCats.forEach(cat => {
+        frase += `${cat.nome} <i class="fas fa-ribbon" style="color: ${cat.fiocco.color}; opacity: ${cat.fiocco.opacita}"></i> <br>`;
+    });
+    return frase;
+}
 
-/* uso forEach perché non capisco come utilizzare l'array che map ritorna
-catsF.map(cat => {
-    cat.fiocco = "pink",
-    cat.opacita = cat.eta / 20
-});
-catsM.map(cat => {
-    cat.fiocco = "blue",
-    cat.opacita = cat.eta / 20
-}); */
+document.getElementById("ex").innerHTML = catRibbon(catsF) + catRibbon(catsM);
 
-console.log(catsF);
-
-let gatte = "";
-let gatti = "";
-catsF.forEach(cat => {
-    const {nome} = cat;
-    gatte += nome + '<i class="fas fa-ribbon" style="color: ' + cat.fiocco + '; opacity: ' + cat.opacita + ';"></i> <br>';
-});
-
-catsM.forEach(cat => {
-    const {nome} = cat;
-    gatti += nome + '<i class="fas fa-ribbon" style="color: ' + cat.fiocco + '; opacity: ' + cat.opacita + ';"></i> <br>';
-});
-
-document.getElementById("ex").innerHTML = gatte + gatti;
-
-/* value by reference! cancella le proprietà anche da catsF e catsM */
+/* value by reference? cancella le proprietà anche da catsF e catsM */
 let allCats = [...catsF, ...catsM];
 allCats.forEach(cat => {
     for(let k in cat) {
-        if (k != "nome" && k != "fiocco" && k != "opacita") delete cat[k];
+        if (k != "nome" && k != "fiocco") delete cat[k];
     }
 });
 
